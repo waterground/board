@@ -8,35 +8,24 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.mchange.v2.c3p0.DriverManagerDataSource;
 import com.sjh.web.Pagination;
 import com.sjh.web.board.Board;
 
 @Repository
 public class BoardDAO implements IBoardDAO {
-	private String user = "root"; // 사용자 이름
-	private String password = "123456"; // PW
-	private String db = "board"; // DB이름
-	private String driver = "com.mysql.cj.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost:3306/" + db +"?characterEncoding=euckr&useUnicode=true&mysqlEncoding=euckr";
 
-	private DriverManagerDataSource dataSource;
 	private JdbcTemplate template;
 	
-	public BoardDAO() {
-		dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClass(driver);
-		dataSource.setJdbcUrl(url);
-		dataSource.setUser(user);
-		dataSource.setPassword(password);
-		template = new JdbcTemplate();
-		template.setDataSource(dataSource);
+	public BoardDAO(DataSource dataSource) {
+		this.template = new JdbcTemplate(dataSource);
 	}
 	
 	@Override

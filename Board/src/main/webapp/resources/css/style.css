@@ -6,7 +6,7 @@
 }
 
 .title {
-	margin: 5px 0;
+	margin: 10px 0;
 	padding: 10px 0;
 }
 
@@ -17,4 +17,9 @@
 textarea {
 	width: 100%;
 	margin: 0 auto;
+}
+
+.writeForm{
+	width: 60%;
+	margin-top: 20px;
 }
