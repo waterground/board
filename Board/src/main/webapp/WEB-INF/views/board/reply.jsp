@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:if test="${!empty member}">
@@ -152,7 +151,6 @@ function fn_remove(rId) {
 // 댓글 페이징 출력
 function fn_printPaging(pagination){
 	var html = "";
-	console.log(pagination);
 	if(pagination.prev){
 		html += "<li class='page-item'><a href='' onClick='fn_getList(" + (pagination.startPage - 1) +")' class='page-link' href='#'>&lt;</a></li>";
 	}
@@ -177,7 +175,6 @@ function fn_printPaging(pagination){
 
 // 댓글 목록 함수
 function fn_getList(pageNum){
-	console.log("after : pageNum is " + pageNum);
 	$.ajax({
 		type: "post",
 		url: "${cp}/reply/list/" + pageNum,
