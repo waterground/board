@@ -37,6 +37,4 @@ public class Member {
 	public void setmAddress(String mAddress) {
 		this.mAddress = mAddress;
 	}
-	
-	
 }

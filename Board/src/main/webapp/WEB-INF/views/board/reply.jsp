@@ -152,6 +152,7 @@ function fn_remove(rId) {
 // 댓글 페이징 출력
 function fn_printPaging(pagination){
 	var html = "";
+	console.log(pagination);
 	if(pagination.prev){
 		html += "<li class='page-item'><a href='' onClick='fn_getList(" + (pagination.startPage - 1) +")' class='page-link' href='#'>&lt;</a></li>";
 	}

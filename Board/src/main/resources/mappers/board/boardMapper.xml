@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sjh.web.mappers.board.BoardMapper">
+	<insert id="create">
+		INSERT INTO board(
+			mId
+			, bName
+			, bTitle
+			, bContent
+		) VALUES (
+			#{mId}
+			, #{bName}
+			, #{bTitle}
+			, #{bContent}
+		)
+	</insert>
+	
+	<select id="listUp" resultMap="boardResultMap">
+		SELECT *
+		FROM board
+		ORDER BY bId DESC 
+		LIMIT 
+			#{startList}, #{listSize}
+	</select>
+	
+	<update id="update">
+		UPDATE 
+			board 
+		SET 
+			bTitle=#{bTitle}
+			, bContent=#{bContent}
+		WHERE 
+			bId=#{bId}
+	</update>
+	
+	<select id="select" resultType="Board">
+		SELECT * 
+		FROM board 
+		WHERE 
+			bId=#{bId}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM board 
+		WHERE bId=#{bId}
+	</delete>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) 
+		FROM board
+	</select>
+
+	<update id="hitUp">
+		UPDATE board 
+		SET bHit=bHit+1 
+		WHERE bId=#{bId}
+	</update>
+	
+	<!-- DTO의 필드변수명과 DB 칼럼명 매핑 -->
+	<resultMap id="boardResultMap" type="Board">
+		<id property="bId" column="bId"/>
+		<result property="mId" column="mId"/>
+		<result property="bName" column="bName"/>
+		<result property="bTitle" column="bTitle"/>
+		<result property="bContent" column="bContent"/>
+		<result property="bDate" column="bDate"/>
+		<result property="bHit" column="bHit"/>
+	</resultMap>
+</mapper>

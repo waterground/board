@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sjh.web.mappers.member.memberMapper">
+	<insert id="create">
+		INSERT INTO member VALUES (
+			#{mId}
+			, #{mPw}
+			, #{mName}
+			, #{mEmail}
+			, #{mAddress}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE 
+			member
+		SET 
+			mPw=#{mPw}
+			, mName=#{mName}
+			, mEmail=#{mEmail}
+			, mAddress=#{mAddress}
+		WHERE 
+			mId=#{mId}
+	</update>
+	
+	<select id="select" resultType="Member">
+		SELECT * 
+		FROM member 
+		WHERE 
+			mId=#{mId}
+		AND
+			mPw=#{mPw}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM member 
+		WHERE mId=#{mId}
+	</delete>
+	
+</mapper>

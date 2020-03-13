@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sjh.web.mappers.reply.ReplyMapper">
+	<insert id="create">
+		INSERT INTO reply(
+			bId
+			, rContent
+			, rName
+			, mId
+		) VALUES (
+			#{bId}
+			, #{rContent}
+			, #{rName}
+			, #{mId}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE 
+			reply
+		SET 
+			rContent=#{rContent}
+		WHERE 
+			rId=#{rId}
+	</update>
+	
+	<select id="listUp" resultMap="replyResultMap">
+		SELECT * 
+		FROM reply 
+		WHERE bId=#{bId} 
+		ORDER BY rId 
+		LIMIT #{pagination.startList}, #{pagination.listSize}
+	</select>
+	
+	<select id="select">
+		SELECT * 
+		FROM reply 
+		WHERE 
+			rId=#{rId}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM reply 
+		WHERE rId=#{rId}
+	</delete>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) 
+		FROM reply 
+		WHERE bId=#{bId}
+	</select>
+	
+	
+	<!-- DTO의 필드변수명과 DB 칼럼명 매핑 -->
+	<resultMap id="replyResultMap" type="Reply">
+		<id property="rId" column="rId"/>
+		<result property="bId" column="bId"/>
+		<result property="rContent" column="rContent"/>
+		<result property="rDate" column="rDate"/>
+		<result property="bContent" column="bContent"/>
+		<result property="mId" column="mId"/>
+		<result property="rName" column="rName"/>
+	</resultMap>
+</mapper>

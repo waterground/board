@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 			</tr>
 			<tr>
 				<td>날짜</td>
-				<td>${board.bDate}</td>
+				<td><fmt:formatDate value="${board.bDate}" pattern="yyyy.MM.dd hh:mm:ss" /></td>
 			</tr>
 		</table>
 		<div style="margin:15px auto;">

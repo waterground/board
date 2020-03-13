@@ -10,7 +10,7 @@ public class Board {
 	private String bContent;
 	private Timestamp bDate;
 	private int bHit;
-	
+
 	public int getbId() {
 		return bId;
 	}
@@ -53,5 +53,4 @@ public class Board {
 	public void setbHit(int bHit) {
 		this.bHit = bHit;
 	}
-	
 }

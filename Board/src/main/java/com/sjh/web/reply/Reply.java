@@ -3,13 +3,13 @@ package com.sjh.web.reply;
 import java.sql.Timestamp;
 
 public class Reply {
-	int rId;
-	int bId;
-	String rContent;
-	Timestamp rDate;
-	String mId;
-	String rName;
-	
+	private int rId;
+	private int bId;
+	private String rContent;
+	private Timestamp rDate;
+	private String mId;
+	private String rName;
+
 	public int getrId() {
 		return rId;
 	}
