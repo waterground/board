@@ -1,8 +1,5 @@
 # Spring-MVC Board
 
-## 사용한 기술
-Spring, Mybatis, Mysql
-
 ### 회원 정보 관리
 회원 정보에 대한 CRUD 구현
 
